@@ -1,8 +1,8 @@
 'use client'
 
 export default function Navbar() {
-  const scrollToEvent = () => {
-    document.querySelector('#first-event')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToRegister = () => {
+    document.querySelector('#register')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -16,17 +16,17 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
           <button
             type="button"
-            onClick={scrollToEvent}
+            onClick={scrollToRegister}
             className="hidden font-body text-sm text-muted md:block"
           >
-            Our First Event
+            Register Now
           </button>
           <button
             type="button"
-            onClick={scrollToEvent}
+            onClick={scrollToRegister}
             className="rounded-md bg-orange px-4 py-2 text-sm font-semibold text-carbon transition-all duration-200 hover:brightness-110"
           >
-            Register Interest
+            Register Now
           </button>
         </div>
       </div>

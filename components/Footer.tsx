@@ -19,6 +19,9 @@ export default function Footer() {
           <p className="font-body text-xs text-muted">
             &copy; 2025 RallyVerse. All rights reserved.
           </p>
+          <p className="mt-[6px] font-body text-xs text-orange opacity-70">
+            Badminton is just the beginning. Treks, marathons, and cycling rallies are coming.
+          </p>
         </div>
       </div>
     </footer>

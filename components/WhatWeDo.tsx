@@ -6,29 +6,29 @@ export default function WhatWeDo() {
           <div className="flex items-center gap-3">
             <div className="h-px w-10 bg-orange" />
             <span className="font-body text-[11px] uppercase tracking-widest text-muted">
-              WHAT WE DO
+              WHY RALLYVERSE
             </span>
           </div>
 
           <div className="mt-5 font-display text-[64px] leading-none uppercase text-primary">
-            <div>WE CREATE</div>
-            <div>THE STAGE.</div>
-            <div>YOU SHOW UP.</div>
+            <div>TOURNAMENTS</div>
+            <div>THAT ACTUALLY</div>
+            <div>FEEL LIKE ONE.</div>
           </div>
         </div>
 
         <div className="font-body text-[17px] leading-[1.85] text-muted">
           <p className="mb-5">
-            RallyVerse is not a sports brand. We do not sell jerseys or equipment.
+            Too many local badminton tournaments feel like an afterthought. Poorly organised brackets, no atmosphere, courts booked at the last minute.
           </p>
           <p className="mb-5">
-            We are the people who find the trail, book the courts, plan the route, and fire the starting gun.
+            RallyVerse is different. We handle everything &mdash; venue booking, bracket management, match scheduling, and a community of players who are serious about showing up.
           </p>
           <p className="mb-5">
-            We organize the moments that become the stories you tell for years.
+            Every RallyVerse tournament has a clear format, a fair draw, and an energy that makes you want to come back for the next one.
           </p>
           <p className="font-medium text-primary">
-            Badminton. Treks. Marathons. Cycling. Whatever gets your community moving &mdash; that is our event to plan.
+            Beginner. Intermediate. Advanced. Singles. Doubles. Mixed. There is a bracket for you.
           </p>
         </div>
       </div>

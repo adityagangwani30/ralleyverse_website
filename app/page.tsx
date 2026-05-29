@@ -5,6 +5,7 @@ import Hero from '@/components/hero'
 import WhatWeDo from '@/components/WhatWeDo'
 import EventCategories from '@/components/EventCategories'
 import FirstEvent from '@/components/FirstEvent'
+import RegistrationForm from '@/components/RegistrationForm'
 import ManifestoStrip from '@/components/ManifestoStrip'
 import Footer from '@/components/Footer'
 
@@ -16,6 +17,7 @@ export default function Page() {
       <WhatWeDo />
       <EventCategories />
       <FirstEvent />
+      <RegistrationForm />
       <ManifestoStrip />
       <Footer />
     </main>
