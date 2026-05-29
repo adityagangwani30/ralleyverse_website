@@ -1,34 +1,35 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+
 export default function Navbar() {
-  const scrollToRegister = () => {
-    document.querySelector('#register')?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const router = useRouter()
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-[60px] border-b border-subtle bg-carbon">
+    <header className="fixed inset-x-0 top-0 z-50 h-[60px] border-b border-subtle bg-carbon/95 backdrop-blur-sm">
       <div className="flex h-full items-center justify-between px-6 md:px-12">
-        <p className="font-display text-2xl">
-          <span className="text-primary">Rally</span>
-          <span className="text-orange">Verse</span>
-        </p>
+        <button type="button" onClick={() => router.push('/')} className="flex items-center">
+          <Image
+            src="/logo_transparent.png"
+            alt="RallyVerse"
+            width={32}
+            height={32}
+            className="h-8 w-auto object-contain md:h-9"
+            priority
+          />
+          <span className="ml-2 font-display text-xl text-primary md:text-2xl">
+            Rally<span className="text-orange">Verse</span>
+          </span>
+        </button>
 
-        <div className="flex items-center gap-6">
-          <button
-            type="button"
-            onClick={scrollToRegister}
-            className="hidden font-body text-sm text-muted md:block"
-          >
-            Register Now
-          </button>
-          <button
-            type="button"
-            onClick={scrollToRegister}
-            className="rounded-md bg-orange px-4 py-2 text-sm font-semibold text-carbon transition-all duration-200 hover:brightness-110"
-          >
-            Register Now
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => router.push('/register')}
+          className="rounded-md bg-brand-gradient px-4 py-2 text-sm font-semibold text-carbon transition-all duration-200 hover:scale-105 hover:glow-orange active:scale-95"
+        >
+          Register Now
+        </button>
       </div>
     </header>
   )

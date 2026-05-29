@@ -1,4 +1,5 @@
 import { Swords, Mountain, Timer, Bike } from 'lucide-react'
+import AnimatedSection from '@/components/AnimatedSection'
 
 const categories = [
   {
@@ -27,26 +28,30 @@ export default function EventCategories() {
   return (
     <section className="border-y border-subtle bg-surface py-24">
       <div className="mx-auto max-w-[1100px] px-6">
-        <div className="mb-12 flex flex-col items-center gap-3">
-          <div className="h-px w-10 bg-orange" />
-          <span className="font-body text-[11px] uppercase tracking-widest text-muted">
-            WHAT WE ORGANIZE
-          </span>
-        </div>
+        <AnimatedSection>
+          <div className="mb-12 flex flex-col items-center gap-3">
+            <div className="h-px w-10 bg-orange" />
+            <span className="font-body text-[11px] uppercase tracking-widest text-muted">
+              WHAT WE ORGANIZE
+            </span>
+          </div>
+        </AnimatedSection>
 
         <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
-          {categories.map((cat) => {
+          {categories.map((cat, i) => {
             const Icon = cat.icon
             return (
-              <div key={cat.name} className="flex flex-col items-center text-center">
-                <Icon size={32} color="#F97316" className="mb-4" />
-                <div className="font-display text-[28px] uppercase text-primary">
-                  {cat.name}
+              <AnimatedSection key={cat.name} delay={i * 0.1}>
+                <div className="group flex flex-col items-center text-center">
+                  <Icon size={32} className="mb-4 text-orange transition-all duration-300 group-hover:text-cyan group-hover:drop-shadow-[0_0_8px_rgba(0,229,255,0.5)]" />
+                  <div className="font-display text-[28px] uppercase text-primary transition-colors duration-300 group-hover:text-orange">
+                    {cat.name}
+                  </div>
+                  <p className="mt-2 max-w-[160px] font-body text-[13px] leading-relaxed text-muted">
+                    {cat.desc}
+                  </p>
                 </div>
-                <p className="mt-2 max-w-[160px] font-body text-[13px] leading-relaxed text-muted">
-                  {cat.desc}
-                </p>
-              </div>
+              </AnimatedSection>
             )
           })}
         </div>

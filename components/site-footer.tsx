@@ -77,7 +77,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-border pt-6 text-center text-[13px] text-muted">
-          © 2025 RallyVerse · Made in India
+          © 2026 RallyVerse · Made in India
         </div>
       </div>
     </footer>

@@ -1,18 +1,18 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { MapPin, Calendar } from 'lucide-react'
+import AnimatedSection from '@/components/AnimatedSection'
 
 export default function FirstEvent() {
-  const scrollToRegister = () => {
-    document.querySelector('#register')?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const router = useRouter()
 
   return (
     <section id="first-event" className="bg-carbon py-32">
       <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-16 px-6 md:grid-cols-2 md:items-start">
-        <div>
+        <AnimatedSection>
           <p className="mb-5 font-body text-[11px] uppercase tracking-widest text-muted">
-            FIRST WAVE &middot; BANGALORE &middot; 2025
+            FIRST WAVE &middot; BANGALORE &middot; 2026
           </p>
 
           <div className="font-display text-[88px] leading-none uppercase text-primary md:text-[100px]">
@@ -39,32 +39,35 @@ export default function FirstEvent() {
           <div className="mt-9">
             <button
               type="button"
-              onClick={scrollToRegister}
-              className="rounded-md bg-orange px-8 py-3 font-body text-sm font-bold text-carbon transition-all duration-200 hover:brightness-110"
+              onClick={() => router.push('/register')}
+              className="group relative overflow-hidden rounded-md bg-orange px-8 py-3 font-body text-sm font-bold text-carbon transition-all duration-200 hover:scale-105 hover:glow-orange active:scale-95"
             >
-              Register Your Spot
+              <span className="relative z-10">Register Your Spot</span>
+              <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: 'linear-gradient(135deg, #FF5E00 0%, #00E5FF 100%)' }} />
             </button>
           </div>
-        </div>
+        </AnimatedSection>
 
-        <div>
-          <div className="flex aspect-[3/4] w-full items-center justify-center rounded-xl border border-subtle bg-surface">
-            <span className="font-display text-lg tracking-wider text-subtle">
-              EVENT PHOTO COMING SOON
-            </span>
-          </div>
+        <AnimatedSection delay={0.15}>
+          <div className="group">
+            <div className="flex aspect-[3/4] w-full items-center justify-center rounded-xl border border-subtle bg-surface transition-all duration-300 group-hover:border-orange/30 group-hover:glow-orange">
+              <span className="font-display text-lg tracking-wider text-muted transition-colors duration-300 group-hover:text-orange">
+                EVENT PHOTO COMING SOON
+              </span>
+            </div>
 
-          <div className="mt-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <MapPin size={14} color="#F97316" />
-              <span className="font-body text-sm text-muted">Bengaluru, India</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Calendar size={14} color="#F97316" />
-              <span className="font-body text-sm text-muted">Date TBA</span>
+            <div className="mt-4 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <MapPin size={14} className="text-orange" />
+                <span className="font-body text-sm text-muted">Bengaluru, India</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar size={14} className="text-orange" />
+                <span className="font-body text-sm text-muted">Date TBA</span>
+              </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   )
