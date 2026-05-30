@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo_transparent.png"
+              src="/logo/only_logo_white.png"
               alt="RallyVerse logo"
               width={28}
               height={28}

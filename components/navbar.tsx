@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="flex h-full items-center justify-between px-6 md:px-12">
         <button type="button" onClick={() => router.push('/')} className="flex items-center">
           <Image
-            src="/logo_transparent.png"
+            src="/logo/only_logo_white.png"
             alt="RallyVerse logo"
             width={32}
             height={32}

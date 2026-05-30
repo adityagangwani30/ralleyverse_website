@@ -62,7 +62,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "RallyVerse",
               "url": "https://www.rallyverse.in",
-              "logo": "https://www.rallyverse.in/logo_transparent.png",
+              "logo": "https://www.rallyverse.in/logo/logo_transparent.png",
               "description": "Competitive badminton tournaments, community treks, marathons and cycling events in Bengaluru.",
               "address": {
                 "@type": "PostalAddress",
