@@ -6,7 +6,7 @@
   --color-orange: #FF5E00;
   --color-cyan: #00E5FF;
   --color-primary: #F5F5F5;
-  --color-muted: #6B6B6B;
+  --color-muted: #909090;
   --color-subtle: #232833;
 
   --font-display: var(--font-bebas), 'Bebas Neue', 'sans-serif';
@@ -52,6 +52,14 @@
   ::selection {
     background-color: #FF5E00;
     color: #0B0D10;
+  }
+
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #00E5FF;
+    outline-offset: 2px;
   }
 
   @media (prefers-reduced-motion: reduce) {

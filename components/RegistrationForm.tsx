@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { CheckCircle } from 'lucide-react'
+import Link from 'next/link'
 import AnimatedSection from '@/components/AnimatedSection'
 
 const inputClass =
@@ -35,6 +36,22 @@ export default function RegistrationForm() {
       setError('Please fill in all required fields.')
       return
     }
+
+    if (formData.name.trim().length < 2) {
+      setError('Name must be at least 2 characters long.')
+      return
+    }
+
+    if (!/^[\d\s\+\-]{10,}$/.test(formData.phone)) {
+      setError('Please enter a valid WhatsApp number (at least 10 digits).')
+      return
+    }
+
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setError('Please enter a valid email address.')
+      return
+    }
+
     setError('')
     setLoading(true)
     await new Promise((resolve) => setTimeout(resolve, 800))
@@ -55,12 +72,16 @@ export default function RegistrationForm() {
         <p className="mt-4 max-w-[400px] font-body text-base leading-relaxed text-muted">
           We have received your interest. Expect a WhatsApp message from us with tournament details very soon. Get your racket ready.
         </p>
+        <p className="mt-2 max-w-[400px] font-body text-sm leading-relaxed text-muted">
+          We&apos;ll reach out on WhatsApp within 24 hours with full tournament details.
+        </p>
       </div>
 
       <div className="mt-4 w-full max-w-[360px] rounded-md border border-subtle px-6 py-4 text-left">
         <p className="mb-3 font-body text-xs uppercase tracking-widest text-muted">
           YOUR REGISTRATION SUMMARY
         </p>
+        {/* React JSX auto-escapes rendered strings, so formData.name/phone are safe from XSS */}
         <p className="font-body text-sm text-primary">{formData.name}</p>
         <p className="mt-1 font-body text-sm text-muted">{formData.phone}</p>
         <p className="mt-1 font-body text-sm capitalize text-muted">
@@ -71,9 +92,21 @@ export default function RegistrationForm() {
           {formData.zone.replace(/_/g, ' ')} Bangalore
         </p>
       </div>
+
+      <Link
+        href="/"
+        className="mt-6 inline-flex items-center rounded-md border border-subtle px-6 py-3 font-body text-sm font-semibold text-primary transition-all duration-200 hover:border-orange hover:text-orange"
+      >
+        &larr; Back to Home
+      </Link>
     </div>
   ) : (
     <div className="flex flex-col gap-6">
+      {error && (
+        <div role="alert" aria-live="polite" className="mb-6 rounded-md bg-red-500/10 border border-red-500/30 p-3">
+          <p className="text-sm text-red-400">{error}</p>
+        </div>
+      )}
       <div>
         <label className="mb-1 block font-body text-sm text-muted">
           Full Name <span className="ml-1 text-orange">*</span>
@@ -84,6 +117,7 @@ export default function RegistrationForm() {
           placeholder="Your full name"
           value={formData.name}
           onChange={handleChange}
+          maxLength={100}
           className={inputClass}
         />
       </div>
@@ -101,6 +135,7 @@ export default function RegistrationForm() {
           placeholder="+91 98765 43210"
           value={formData.phone}
           onChange={handleChange}
+          maxLength={15}
           className={inputClass}
         />
       </div>
@@ -130,6 +165,7 @@ export default function RegistrationForm() {
           name="skillLevel"
           value={formData.skillLevel}
           onChange={handleChange}
+          aria-label="Your skill level"
           className={selectClass}
         >
           <option value="" disabled>
@@ -155,6 +191,7 @@ export default function RegistrationForm() {
           name="playStyle"
           value={formData.playStyle}
           onChange={handleChange}
+          aria-label="How you want to play"
           className={selectClass}
         >
           <option value="" disabled>
@@ -180,6 +217,7 @@ export default function RegistrationForm() {
           name="zone"
           value={formData.zone}
           onChange={handleChange}
+          aria-label="Your area in Bangalore"
           className={selectClass}
         >
           <option value="" disabled>
@@ -209,19 +247,19 @@ export default function RegistrationForm() {
         />
       </div>
 
-      {error && (
-        <p className="font-body text-sm text-orange">{error}</p>
-      )}
+
 
       <button
         type="button"
         onClick={handleSubmit}
-        className="group relative w-full overflow-hidden rounded-md bg-brand-gradient py-4 font-body text-sm font-bold tracking-wide text-carbon transition-all duration-200 hover:scale-[1.02] hover:glow-orange active:scale-[0.98]"
+        disabled={loading}
+        aria-busy={loading}
+        className="group relative w-full overflow-hidden rounded-md bg-brand-gradient py-4 font-body text-sm font-bold tracking-wide text-carbon transition-all duration-200 hover:scale-[1.02] hover:glow-orange active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
       >
         {loading ? (
           <div className="flex items-center justify-center gap-2">
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-carbon border-t-transparent" />
-            <span>Registering...</span>
+            <span>Submitting...</span>
           </div>
         ) : (
           'I AM IN — REGISTER MY INTEREST'

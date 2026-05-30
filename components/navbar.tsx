@@ -15,7 +15,7 @@ export default function Navbar() {
             alt="RallyVerse"
             width={32}
             height={32}
-            className="h-8 w-auto object-contain md:h-9"
+            className="w-auto h-8 object-contain"
             priority
           />
           <span className="ml-2 font-display text-xl text-primary md:text-2xl">

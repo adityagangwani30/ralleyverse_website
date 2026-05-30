@@ -12,7 +12,7 @@ export default function Footer() {
               alt="RallyVerse"
               width={28}
               height={28}
-              className="h-7 w-auto object-contain"
+              className="w-auto h-8 object-contain"
             />
             <span className="font-display text-[22px]">
               <span className="text-primary">Rally</span>
